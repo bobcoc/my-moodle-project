@@ -3,7 +3,6 @@
 
 # ===== Moodle核心文件（从官方仓库获取，不需要跟踪） =====
 # 排除大部分官方核心目录
-/admin/
 /analytics/
 /auth/
 /availability/
