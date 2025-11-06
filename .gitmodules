@@ -1,0 +1,9 @@
+[submodule "theme/academi"]
+    path = theme/academi
+    url = git@github.com:bobcoc/academi.git
+    branch = main
+
+[submodule "mod/questionnaire"]
+    path = mod/questionnaire
+    url = git@github.com:bobcoc/mod_questionnaire.git
+    branch = main

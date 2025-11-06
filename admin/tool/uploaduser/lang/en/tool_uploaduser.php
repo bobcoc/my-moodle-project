@@ -74,6 +74,15 @@ $string['uploadpicture_userskipped'] = 'Skipping user {$a} (already has a pictur
 $string['uploadpicture_userupdated'] = 'Picture updated for user {$a}.';
 $string['uploadpictures'] = 'Upload user pictures';
 $string['uploadpictures_help'] = 'User pictures can be uploaded as a zip file of image files. The image files should be named chosen-user-attribute.extension, for example user1234.jpg for a user with username user1234.';
+$string['uploadpicturesbatch'] = 'Batch upload user pictures by lastname';
+$string['uploadpicturesbatch_help'] = 'Upload user pictures by matching image filenames with user lastname field. For example, if a user has lastname "202510001", the picture file should be named "202510001.png". Supported formats: PNG, JPG, JPEG, GIF.';
+$string['uploadpicturesbatch_file'] = 'Upload a zip file containing images. Image filenames must match the lastname field of users (e.g., 202510001.png for a user with lastname "202510001").';
+$string['processingfiles'] = 'Processing files';
+$string['uploadstats'] = 'Upload statistics';
+$string['totalfiles'] = 'Total files';
+$string['picturesskipped'] = 'Pictures skipped';
+$string['usersnotfound'] = 'Users not found';
+$string['uploadmore'] = 'Upload more pictures';
 $string['uploadusers'] = 'Upload users';
 $string['uploadusers_help'] = 'Users may be uploaded (and optionally enrolled in courses) via text file. The format of the file should be as follows:
 

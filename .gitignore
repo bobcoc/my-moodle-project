@@ -1,61 +1,132 @@
-# This file specifies intentionally untracked files that all Moodle git
-# repositories should ignore. It is recommended not to modify this file in your
-# local clone. Instead, use .git/info/exclude and add new records there as
-# needed.
-#
-# Example: if you deploy a contributed plugin mod/foobar into your site, put
-# the following line into .git/info/exclude file in your Moodle clone:
-# /mod/foobar/
-#
-# See gitignore(5) man page for more details
-#
+# Moodle .gitignore 示例
+# 此文件用于排除Moodle官方核心文件，只跟踪自定义内容
 
-# Swap files (vim)
-[._]*.s[a-v][a-z]
-[._]*.sw[a-p]
-[._]s[a-rt-v][a-z]
-[._]ss[a-gi-z]
-[._]sw[a-p]
-# Temporary files including undo
-*~
-#
+# ===== Moodle核心文件（从官方仓库获取，不需要跟踪） =====
+# 排除大部分官方核心目录
+/admin/
+/analytics/
+/auth/
+/availability/
+/backup/
+/badges/
+/blocks/
+/blog/
+/cache/
+/calendar/
+/cohort/
+/comment/
+/communication/
+/competency/
+/completion/
+/contentbank/
+/course/
+/customfield/
+/dataformat/
+/enrol/
+/error/
+/favourites/
+/files/
+/filter/
+/grade/
+/group/
+/h5p/
+/install/
+/iplookup/
+/lang/
+/lib/
+/local/
+/login/
+/media/
+/message/
+/mnet/
+/moodlenet/
+/my/
+/notes/
+/payment/
+/plagiarism/
+/portfolio/
+/privacy/
+/question/
+/rating/
+/report/
+/reportbuilder/
+/repository/
+/rss/
+/search/
+/sms/
+/tag/
+/user/
+/userpix/
+/webservice/
+
+# 排除官方模块（保留自定义模块）
+/mod/*
+# 但保留自定义模块作为子模块
+!/mod/questionnaire/
+
+# 排除官方主题（保留自定义主题）
+/theme/*
+# 但保留自定义主题作为子模块
+!/theme/academi/
+
+# 排除根目录的官方文件
+/*.php
+!config.php
+!config-dist.php
+/*.txt
+/*.md
+/*.json
+/*.lock
+/composer.json
+/composer.lock
+/package.json
+/npm-shrinkwrap.json
+/Gruntfile.js
+/.eslintrc
+
+# ===== Moodle数据和缓存文件 =====
 /config.php
-/tags
-/TAGS
-/cscope.*
-/.patches/
-/.idea/
-.phpstorm.*
-!/.phpstorm.meta.php/
-/.phpstorm.meta.php/*
-!/.phpstorm.meta.php/di.php
-/nbproject/
-CVS
+moodledata/
+/moodledata_*/
+
+# ===== 临时文件和日志 =====
+*.log
+*.tmp
+/temp/
+/cache/
+
+# ===== IDE和编辑器文件 =====
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 .DS_Store
-/.settings/
-/.project
-/.buildpath
-/.cache
-.phpunit.result.cache
-phpunit.xml
-# Composer support. Do not ignore composer.json, or composer.lock. These should be shipped by us.
-composer.phar
-/vendor/
+Thumbs.db
+
+# ===== 备份文件 =====
+*.bak
+*.backup
+.git.backup/
+
+# ===== 其他 =====
+/phpunit.xml
 /behat.yml
-*/yui/build/*/*-coverage.js
-/lib/yuilib/*/build/*/*-coverage.js
-# lib/yuilib/version/module/module-coverage.js
-/lib/yuilib/*/*/*-coverage.js
-atlassian-ide-plugin.xml
-/node_modules/
-/.vscode/
-moodle-plugin-ci.phar
-.eslintignore
-.stylelintignore
-/jsdoc
-/admin/tool/componentlibrary/docs
-/admin/tool/componentlibrary/hugo/site/data/my-index.json
-.hugo_build.lock
-phpcs.xml
-jsconfig.json
-UPGRADING-CURRENT.md
+/.phpunit.result.cache
+
+# ===== 需要跟踪的内容 =====
+# 自定义CLI脚本
+!/admin/cli/upload_user_pictures_batch.php
+
+# 自定义工具（如果有修改）
+!/admin/tool/uploaduser/picture_batch.php
+!/admin/tool/uploaduser/picture_batch_form.php
+!/admin/tool/uploaduser/batch_upload_guide.html
+!/admin/tool/uploaduser/settings.php
+!/admin/tool/uploaduser/lang/
+
+# 配置文件模板
+!config-dist.php
+
+# 自定义文档（如果需要）
+# !README_CUSTOM.md
