@@ -25,10 +25,23 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-global $CFG;
-// Get the gateway records.
-$manager = \core\di::get(\core_sms\manager::class);
-$gatewayrecords = $manager->get_gateway_records(['enabled' => 1]);
+global $CFG, $DB;
+
+// Initialize variables
+$gatewayrecords = [];
+
+// Only try to get gateway records if DB is available
+if (isset($DB) && $DB instanceof \moodle_database) {
+    try {
+        $manager = \core\di::get(\core_sms\manager::class);
+        $gatewayrecords = $manager->get_gateway_records(['enabled' => 1]);
+    } catch (\Throwable $e) {
+        // If there's any error getting gateway records, log it but continue
+        debugging('Error loading SMS gateways: ' . $e->getMessage(), DEBUG_DEVELOPER);
+        $gatewayrecords = [];
+    }
+}
+
 $smsconfigureurl = new moodle_url(
     '/sms/configure.php',
     [
