@@ -22,10 +22,10 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-require('../../../config.php');
+require(__DIR__.'/../../../config.php');
 require_once($CFG->libdir.'/adminlib.php');
 require_once($CFG->libdir.'/gdlib.php');
-require_once('picture_batch_form.php');
+require_once(__DIR__.'/picture_batch_form.php');
 
 define('PIX_FILE_UPDATED', 0);
 define('PIX_FILE_ERROR', 1);
@@ -33,12 +33,15 @@ define('PIX_FILE_SKIPPED', 2);
 
 admin_externalpage_setup('tooluploaduserpicturesbatch');
 
-require_capability('tool/uploaduser:uploaduserpictures', context_system::instance());
+$context = context_system::instance();
+require_login();
+require_capability('tool/uploaduser:uploaduserpictures', $context);
 
 $returnurl = new moodle_url('/admin/tool/uploaduser/picture_batch.php');
 
-// 页面标题
+// 页面标题和设置
 $struploadpictures = get_string('uploadpicturesbatch', 'tool_uploaduser');
+$PAGE->set_context($context);
 
 $PAGE->set_url($returnurl);
 $PAGE->set_title($struploadpictures);

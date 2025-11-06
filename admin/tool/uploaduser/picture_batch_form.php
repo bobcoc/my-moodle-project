@@ -24,7 +24,9 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-require_once($CFG->libdir.'/formslib.php');
+if (!class_exists('moodleform')) {
+    require_once($CFG->libdir.'/formslib.php');
+}
 
 class admin_uploadpicture_batch_form extends moodleform {
     
